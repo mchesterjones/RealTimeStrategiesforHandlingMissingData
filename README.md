@@ -38,10 +38,7 @@ After `run_all.R` has finished, launch the Shiny app from the project root:
 ```r
 shiny::runApp("app")
 ```
-It reads the summary files in `output/summary/`. To deploy it (e.g. to
-shinyapps.io), copy `AllIter.Rdata` and `LongFormat.Rdata` into `app/data/`
-first, as only the `app/` folder is uploaded. Requires shiny, shinydashboard
-and DT.
+It reads the summary files in `output/summary/`.
 
 ## Requirements
 
