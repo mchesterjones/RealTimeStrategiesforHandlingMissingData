@@ -28,9 +28,10 @@ are in `R/settings.R`. All output is written to `output/`.
 | `02_run_validation.R` | Validation simulation, run in parallel; resumes if interrupted | `output/validation_results/`, logs |
 | `03_summarise_results.R` | Combine and summarise performance across iterations | `output/summary/` |
 | `04_figures.R` | Figures | `output/figures/results/` |
+| `05_dag_figures.R` | 	DAGs of each missingness mechanism and pattern, plus a landscape grid of all of them. Built from the settings, so it needs no simulation results and can be run on its own | output/figures/dags/
 
 Shared code: `R/settings.R` (settings) and `R/functions.R` (data-generating
-mechanism, models, performance measures).
+mechanism, models, performance measures) and R/dag_figures.R (DAG drawing).
 
 ## Requirements
 
@@ -48,3 +49,5 @@ ggplot2, patchwork, svglite. Package versions used are recorded in
 | Proportion of rows with missing data | 25%, 50%, 75% |
 
 200 iterations per scenario; development sample size 100,000.
+
+The missingness DAGs (05_dag_figures.R) draw an arrow into R for every variable with a non-zero ampute() weight, so they always match the simulation settings
