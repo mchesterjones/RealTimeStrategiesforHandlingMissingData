@@ -78,6 +78,13 @@ add_labels <- function(df) {
 
 combined_df <- add_labels(combined_df)
 
+
+## Calibration slope not estimable when the recalibration model is unstable
+## (separation with very few events): standard error > 10
+combined_df <- combined_df %>%
+  mutate(Cal_Slope_unstable = !is.na(Cal_Slope_var) & sqrt(Cal_Slope_var) > 10,
+         Cal_Slope     = if_else(Cal_Slope_unstable, NA_real_, Cal_Slope),
+         Cal_Slope_var = if_else(Cal_Slope_unstable, NA_real_, Cal_Slope_var))
 ################################################################################
 # 3. Summarise across iterations
 ################################################################################
@@ -90,6 +97,9 @@ summarised_df_long <- combined_df %>%
             LCI     = quantile(value, 0.025, na.rm = TRUE),
             UCI     = quantile(value, 0.975, na.rm = TRUE),
             MCSE    = sd(value, na.rm = TRUE) / sqrt(sum(!is.na(value))),
+            MEDIAN  = median(value, na.rm = TRUE),
+            Q1      = quantile(value, 0.25, na.rm = TRUE),
+            Q3      = quantile(value, 0.75, na.rm = TRUE),
             NACount = sum(is.na(value)),
             n_iter  = n(),
             .groups = "drop") %>%

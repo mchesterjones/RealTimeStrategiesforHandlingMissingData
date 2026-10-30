@@ -47,6 +47,7 @@ summarised_df_long <- hide_fully_observed(summarised_df_long)
 ################################################################################
 
 ## One panel: one mechanism x one measure, faceted by missingness
+## Note: this is plotting the mean but can plot the median too
 make_measure_plot <- function(summary_sub, iter_sub, m, fixed_axis) {
 
   p <- ggplot(summary_sub %>% filter(Measure == m$column),
