@@ -33,6 +33,16 @@ are in `R/settings.R`. All output is written to `output/`.
 Shared code: `R/settings.R` (settings) and `R/functions.R` (data-generating
 mechanism, models, performance measures) and R/dag_figures.R (DAG drawing).
 
+Interactive results app
+After `run_all.R` has finished, launch the Shiny app from the project root:
+```r
+shiny::runApp("app")
+```
+It reads the summary files in `output/summary/`. To deploy it (e.g. to
+shinyapps.io), copy `AllIter.Rdata` and `LongFormat.Rdata` into `app/data/`
+first, as only the `app/` folder is uploaded. Requires shiny, shinydashboard
+and DT.
+
 ## Requirements
 
 R packages: dplyr, tidyr, mice, xgboost, pROC, MASS, foreach, doParallel,
