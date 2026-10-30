@@ -42,7 +42,7 @@ ggplot2, patchwork, svglite. Package versions used are recorded in
 
 | Factor | Levels |
 |---|---|
-| Missingness mechanism | MCAR, MAR, MNAR, MNAR without U |
+| Missingness mechanism | MCAR, MAR, MNAR with U, MNAR without U |
 | Validation sample size | 500, 10,000, 100,000 |
 | Outcome prevalence | 10%, 1% |
 | Proportion of rows with missing data | 25%, 50%, 75% |
