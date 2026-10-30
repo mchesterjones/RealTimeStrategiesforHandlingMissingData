@@ -12,10 +12,11 @@
 # source("run_all.R")). All settings are in R/settings.R.
 ################################################################################
 
-source("01_generate_development_data.R")
-source("02_run_validation.R")
-source("03_summarise_results.R")
-source("04_figures.R")
+source("01_generate_development_data.R") ## Creates development models 
+source("02_run_validation.R") ## Runs validation of models 200 times per scenario
+source("03_summarise_results.R") ## Summarises results for paper
+source("04_figures.R") ## Creates figures for paper
+source("05_DAGS.R") # Note: can comment out if you don't wnat to keep creating DAG figures
 
 ## Record package versions for reproducibility
 dir.create(file.path("output", "logs"), showWarnings = FALSE, recursive = TRUE)
